@@ -39,7 +39,7 @@ public class emailTest {
 	    {
 	        WebElement usernameTxt = driver.findElement(By.id("username"));
 	        usernameTxt.sendKeys("tomsmith");
-	        WebElement passwordTxt = driver.findElement(By.id("password"));
+	        WebElement passwordTxt = driver.findElement(By.id("password1"));
 	        passwordTxt.sendKeys("SuperSecretPassword!");
 	        WebElement submitBtn = driver.findElement(By.className("radius"));
 	        submitBtn.click();
