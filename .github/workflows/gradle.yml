@@ -60,4 +60,4 @@ jobs:
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
         from: Surya
-        attachments: https://github.com/csuryaprasad/GitTest1/blob/master/test-output/emailable-report.html
+        attachments: https://github.com/csuryaprasad/GitTest1/blob/master/test-output/passed.png
