@@ -55,10 +55,9 @@ jobs:
         password: ${{secrets.EMAIL_PASSWORD}}
         # email subject
         subject: Github Actions job result
-        # email body as text
-        body: Build job of ${{github.repository}} has ${{job.status}}
-         # Optional HTML body read from file:
-        html_body: https://github.com/csuryaprasad/GitTest1/blob/master/test-output/emailable-report.html
+        body: Build job of ${{github.repository}} completed successfully!
+        # Optional HTML body read from file:
+        html_body: file://README.html
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
