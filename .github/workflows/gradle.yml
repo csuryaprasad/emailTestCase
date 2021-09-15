@@ -55,8 +55,7 @@ jobs:
         password: ${{secrets.EMAIL_PASSWORD}}
         # email subject
         subject: ${{github.repository}} Java CI with Gradle workflow run
-        body: Build job of ${{github.repository}} has ${{job.status}} +
-              https://github.com/csuryaprasad/GitTest1/actions/runs/1236037947
+        body: Build job of ${{github.repository}} has ${{job.status}} Navigate to - https://github.com/csuryaprasad/emailTestCase/actions/runs/1237734886
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
