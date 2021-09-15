@@ -56,7 +56,7 @@ jobs:
         # email subject
         subject: Github Actions job result
         # email body as text
-        body: Build job of ${{github.repository}} has ${{job.status}}
+        body: https://github.com/csuryaprasad/GitTest1/blob/master/test-output/emailable-report.html
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
@@ -66,7 +66,7 @@ jobs:
         # Optional converting Markdown to HTML (set content_type to text/html too):
         convert_markdown: true
         # Optional attachments:
-        links: test-output//emailable-report.html
+        
         attachments: attachments.zip,git.diff,./dist/static/*.js
         # Optional priority: 'high', 'normal' (default) or 'low'
         priority: low
