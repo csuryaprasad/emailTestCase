@@ -74,6 +74,5 @@ jobs:
       content_type: text/html
       attachments:
         - filename: 'text1.txt'
-          content: 'aGVsbG8gd29ybGQh'
         - filename: 'text2.txt',
           path: 'https://github.com/csuryaprasad/emailTestCase/tree/master/test-files'
