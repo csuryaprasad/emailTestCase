@@ -69,3 +69,13 @@ jobs:
         contentType: text/plain
         # Optional attachment files (JSON type. require property 'path')
         attachments: '[{"path":"README.md"}]'
+      
+      # Optional content type (defaults to text/plain):
+      content_type: text/html
+      attachments:
+        - filename: 'text1.txt'
+          content: 'aGVsbG8gd29ybGQh'
+          encoding: 'base64'
+        - filename: git.diff
+        - filename: 'text2.txt',
+          path: 'https://github.com/csuryaprasad/emailTestCase/tree/master/test-files'
