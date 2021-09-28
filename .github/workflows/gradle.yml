@@ -75,6 +75,5 @@ jobs:
       attachments:
         - filename: 'text1.txt'
           content: 'aGVsbG8gd29ybGQh'
-          encoding: 'base64'
         - filename: 'text2.txt',
           path: 'https://github.com/csuryaprasad/emailTestCase/tree/master/test-files'
