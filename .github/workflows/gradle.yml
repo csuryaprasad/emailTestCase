@@ -1,78 +1,63 @@
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Java CI with Gradle
+name: Test action
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  main:
     runs-on: ubuntu-latest
-
+    strategy:
+      max-parallel: 1
+      matrix:
+        include:
+          - subject: Plain body (attachment)
+            attachments: action.yml
+            body: |
+              first line
+              second line
+          - subject: HTML body (attachments)
+            attachments: package.json,package-lock.json
+            html_body: |
+              <!DOCTYPE html>
+              <html>
+              <body>
+              <h1>Heading</h1>
+              <p>Paragraph</p>
+              </body>
+              </html>
+          - subject: Plain body (Markdown)
+            convert_markdown: true
+            body: file://README.md
+          - subject: HTML body (Markdown)
+            convert_markdown: true
+            html_body: file://README.md
+          - subject: Multipart body (Markdown)
+            convert_markdown: true
+            body: file://README.md
+            html_body: file://README.md
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-        cache: gradle
-    
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      
-    - name: Install Google Chrome # Using shell script to install Google Chrome
-      run: 
-          chmod +x ./scripts/InstallChrome.sh
-        ./scripts/InstallChrome.sh
-  
-    - name: Run Tests
-      run: ./gradlew test --info # Run our tests using Gradle
-
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-          name: Run Tests            # Name of the check run which will be created
-          path: build/test-results/test/TEST-*.xml    # Path to test results
-          reporter: java-junit
-   
-    - name: Send mail
-      uses: dawidd6/action-send-mail@v3
-      if: always()
-      with:
-        # Required mail server address:
-        server_address: smtp.gmail.com
-        # Required mail server port:
-        server_port: 465
-        # user credentials
-        username: ${{secrets.EMAIL_USERNAME}}
-        password: ${{secrets.EMAIL_PASSWORD}}
-        # email subject
-        subject: ${{github.repository}} Java CI with Gradle workflow run
-        body: Build job of ${{github.repository}} has ${{job.status}}
-        # send email to
-        to: vig92007@gmail.com,csuryaprasad@gmail.com
-        # from email name
-        from: Surya
-        
-    - name: Send mail Attachments
-      uses: dawidd6/action-send-mail@v3
-      if: always()
-      with:
-        # Optional content type (defaults to text/plain)
-        contentType: text/plain
-        # Optional attachment files (JSON type. require property 'path')
-        attachments: '[{"path":"README.md"}]'
-      
-      # Optional content type (defaults to text/plain):
-      content_type: text/html
-      attachments:
-        - filename: 'text1.txt'
-        - filename: 'text2.txt',
-          path: 'https://github.com/csuryaprasad/emailTestCase/tree/master/test-files'
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Send mail
+        uses: ./
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+          subject: ${{github.repository}} Java CI with Gradle workflow run
+          body: ${{matrix.body}}
+          html_body: ${{matrix.html_body}}
+          to: ${{github.event.pusher.email}}
+          from: github-actions
+          attachments: ${{matrix.attachments}}
+          convert_markdown: ${{matrix.convert_markdown}}
+          priority: high
