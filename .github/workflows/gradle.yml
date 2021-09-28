@@ -21,7 +21,7 @@ jobs:
       matrix:
         include:
           - subject: Plain body (attachment)
-            attachments: action.yml
+            attachments: test-files/text1.txt
     steps:
     - uses: actions/checkout@v2
     - name: Set up Java
