@@ -60,6 +60,11 @@ jobs:
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
         from: Surya
+        
+    - name: Send mail Attachments
+      uses: dawidd6/action-send-mail@v3
+      if: always()
+      with:
         # Optional content type (defaults to text/plain)
         contentType: text/plain
         # Optional attachment files (JSON type. require property 'path')
