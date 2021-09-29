@@ -43,7 +43,7 @@ public class emailTest {
 	 @Test
 	    public void userLogin()
 	    {
-	        WebElement usernameTxt = driver.findElement(By.id("username1"));
+	        WebElement usernameTxt = driver.findElement(By.id("username"));
 	        usernameTxt.sendKeys("tomsmith");
 	        WebElement passwordTxt = driver.findElement(By.id("password"));
 	        passwordTxt.sendKeys("SuperSecretPassword!");
