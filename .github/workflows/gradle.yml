@@ -22,6 +22,29 @@ jobs:
         include:
           - subject: Plain body (attachment)
             attachments: test-files/text1.txt
+            body: |
+              first line
+              second line
+          - subject: HTML body (attachments)
+            attachments: gradlew.bat,settings.gradle
+            html_body: |
+              <!DOCTYPE html>
+              <html>
+              <body>
+              <h1>Heading</h1>
+              <p>Paragraph</p>
+              </body>
+              </html>
+          - subject: Plain body (Markdown)
+            convert_markdown: true
+            body: file://README.md
+          - subject: HTML body (Markdown)
+            convert_markdown: true
+            html_body: file://README.md
+          - subject: Multipart body (Markdown)
+            convert_markdown: true
+            body: file://README.md
+            html_body: file://README.md
     steps:
     - name: Generate build number
       uses: einaregilsson/build-number@v3
