@@ -26,8 +26,8 @@ jobs:
     - name: Print new build number
       run: echo "Build number is $BUILD_NUMBER"
 
-    - name: Set env.BRANCH
-      run: echo "BRANCH=$(echo $GITHUB_REF | cut -d'/' -f 3)" >> $GITHUB_ENV
+    - name: Output the branch name
+      run: echo $(echo $GITHUB_REF | cut -d'/' -f 3)
  
     - uses: actions/checkout@v2
     - name: Set up Java
