@@ -92,8 +92,9 @@ jobs:
         username: ${{secrets.EMAIL_USERNAME}}
         password: ${{secrets.EMAIL_PASSWORD}}
         # email subject
-        subject: ${{github.repository}} Java CI with Gradle workflow run
-        body: Build job of ${{github.repository}} has ${{job.status}}
+        subject: ${{matrix.subject}}
+        body: ${{matrix.body}}
+        html_body: ${{matrix.html_body}}
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
