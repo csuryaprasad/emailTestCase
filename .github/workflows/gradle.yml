@@ -66,7 +66,7 @@ jobs:
         password: ${{secrets.EMAIL_PASSWORD}}
         # email subject
         subject: Build is unstable ${{github.repository}} -${{steps.buildnumber.outputs.build_number}}
-        body: Build job of ${{github.repository}} has ${{job.status}}
+        body: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
