@@ -45,9 +45,9 @@ public class emailTest {
 	    {
 	        WebElement usernameTxt = driver.findElement(By.id("username"));
 	        usernameTxt.sendKeys("tomsmith");
-	        WebElement passwordTxt = driver.findElement(By.id("password1"));
+	        WebElement passwordTxt = driver.findElement(By.id("password"));
 	        passwordTxt.sendKeys("SuperSecretPassword!");
-	        WebElement submitBtn = driver.findElement(By.className("radius"));
+	        WebElement submitBtn = driver.findElement(By.className("radius1"));
 	        submitBtn.click();
 	        log.info("Current URL is:" + driver.getCurrentUrl());
 	        Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
