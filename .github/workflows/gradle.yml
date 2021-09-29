@@ -13,9 +13,11 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  job1:
 
     runs-on: ubuntu-latest
+    outputs:
+      build_number: ${{ steps.buildnumber.outputs.build_number }}
     steps:
     - name: Generate build number
       uses: einaregilsson/build-number@v3
@@ -63,7 +65,7 @@ jobs:
         username: ${{secrets.EMAIL_USERNAME}}
         password: ${{secrets.EMAIL_PASSWORD}}
         # email subject
-        subject: Build is unstable ${{github.repository.name}} #${{BUILD_NUMBER}}
+        subject: Build is unstable ${{github.repository}} # ${{needs.job1.outputs.build_number}}
         body: Build job of ${{github.repository}} has ${{job.status}}
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
