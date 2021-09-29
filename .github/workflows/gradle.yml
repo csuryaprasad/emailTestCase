@@ -76,6 +76,6 @@ jobs:
         # Optional converting Markdown to HTML (set content_type to text/html too):
         convert_markdown: true
         # Optional attachments:
-        attachments: test-files/text1.txt
+        attachments: test-output/userLogin.png
         # Optional priority: 'high', 'normal' (default) or 'low'
         priority: low
