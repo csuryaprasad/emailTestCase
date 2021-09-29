@@ -23,6 +23,13 @@ jobs:
           - subject: Plain body (attachment)
             attachments: test-files/text1.txt
     steps:
+    - name: Generate build number
+      uses: einaregilsson/build-number@v3
+      with:
+        token: ${{secrets.github_token}}        
+    - name: Print new build number
+      run: echo "Build number is $BUILD_NUMBER"
+      
     - uses: actions/checkout@v2
     - name: Set up Java
       uses: actions/setup-java@v2
