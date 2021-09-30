@@ -70,8 +70,8 @@ jobs:
         # email subject
         subject: Build is unstable ${{github.repository}} -${{github.run_id}}
         body: 
-          See <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>
-          Branch - Master
+          See <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}> 
+          Branch - $(echo $GITHUB_REF | cut -d'/' -f 3)
         # send email to
         to: vig92007@gmail.com,csuryaprasad@gmail.com
         # from email name
