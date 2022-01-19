@@ -38,6 +38,7 @@ public class emailTest {
 	        driver.navigate().to("https://the-internet.herokuapp.com/login");
 	        driver.manage().window().maximize();
 	        driver.manage().timeouts().implicitlyWait(100, TimeUnit.MILLISECONDS);
+			System.out.println("Hello World!!!!");
 	    }
 	 
 	 @Test
